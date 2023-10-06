@@ -22,7 +22,7 @@ const extractNumberRegular = (str) => {
   return result === '' ? NaN : Number(result);
 };
 
-// магия реплейса
+// магия реплейса!
 const extractNumberCool = (str) => {
   const result = str.replace(/\D/g, '');
   return result === '' ? NaN : Number(result);
