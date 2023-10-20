@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const COMMENTS = [
   'Всё отлично!',
   'В целом всё неплохо. Но не всё.',
@@ -14,6 +15,13 @@ const NAMES = [
   'Ринго',
 ];
 
+const DESCRIPTIONS = [
+  'I read the news today, oh boy',
+  'About a lucky man who made the grade',
+  'And though the news was rather sad',
+  'Well, I just had to laugh'
+];
+
 const getRandomInteger = (a, b) => {
   const lower = Math.ceil(Math.min(a, b));
   const upper = Math.floor(Math.max(a, b));
@@ -23,41 +31,31 @@ const getRandomInteger = (a, b) => {
 
 const getRandomArrayElement = (elements) => elements[getRandomInteger(0, elements.length - 1)];
 
-const createComment = (i) => {
-  const newComment = {
-    id: i,
-    avatar: `img/avatar-${getRandomInteger(1,6)}`,
-    message: getRandomArrayElement(COMMENTS),
-    name: getRandomArrayElement(NAMES)
-  };
-  return newComment;
-};
-
 const createCommentsArray = () => {
   const commentsQuantity = getRandomInteger(0,30);
   const comments = [];
   for (let i = 0; i < commentsQuantity; i++){
-    comments[i] = createComment(i);
+    comments.push({
+      id: i,
+      avatar: `img/avatar-${getRandomInteger(1,6)}`,
+      message: getRandomArrayElement(COMMENTS),
+      name: getRandomArrayElement(NAMES)
+    });
   }
   return comments;
 };
 
-const createPost = (i) => {
-  const newPost = {
-    id : i,
-    url: `photos/${i}.jpg`,
-    description: 'I read the news today, oh boy, about a lucky man who made the grade',
-    likes: getRandomInteger(15,200),
-    comments: createCommentsArray()
-  };
-  return newPost;
-};
-
-//основной метод
 const createPostsArray = () => {
   const posts = [];
-  for (let i = 0; i < 25; i++){
-    posts[i] = createPost(i);
+  const postsQuantity = 25;
+  for (let i = 0; i < postsQuantity; i++){
+    posts.push({
+      id : i,
+      url: `photos/${i}.jpg`,
+      description: getRandomArrayElement(DESCRIPTIONS),
+      likes: getRandomInteger(15,200),
+      comments: createCommentsArray()
+    });
   }
   return posts;
 };
