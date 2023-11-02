@@ -27,3 +27,17 @@ const extractNumberCool = (str) => {
   const result = str.replace(/\D/g, '');
   return result === '' ? NaN : Number(result);
 };
+
+const convertToMinutes = (time) => {
+  const [hours, minutes] = time.split(':').map(Number);
+  return hours * 60 + minutes;
+};
+
+const isMeetingWithinWorkingHours = (startOfWorkday, endOfWorkday, meetingStart, meetingDuration) => {
+  const startOfWorkdayMinutes = convertToMinutes(startOfWorkday);
+  const endOfWorkdayMinutes = convertToMinutes(endOfWorkday);
+  const meetingStartMinutes = convertToMinutes(meetingStart);
+  const meetingEndMinutes = meetingStartMinutes + meetingDuration;
+
+  return meetingStartMinutes >= startOfWorkdayMinutes && meetingEndMinutes <= endOfWorkdayMinutes;
+};
