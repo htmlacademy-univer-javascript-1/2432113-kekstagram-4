@@ -1,4 +1,4 @@
-import { getRandomInteger, getRandomArrayElement } from './util';
+import { getRandomInteger, getRandomArrayElement } from './util.js';
 
 const COMMENTS = [
   'Всё отлично!',
@@ -29,7 +29,7 @@ export const createCommentsArray = () => {
   for (let i = 0; i < commentsQuantity; i++) {
     comments.push({
       id: i,
-      avatar: `img/avatar-${getRandomInteger(1, 6)}`,
+      avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
       message: getRandomArrayElement(COMMENTS),
       name: getRandomArrayElement(NAMES),
     });
@@ -43,7 +43,7 @@ export const createPostsArray = () => {
   for (let i = 0; i < postsQuantity; i++) {
     posts.push({
       id: i,
-      url: `photos/${i}.jpg`,
+      url: `photos/${i+1}.jpg`,
       description: getRandomArrayElement(DESCRIPTIONS),
       likes: getRandomInteger(15, 200),
       comments: createCommentsArray(),
