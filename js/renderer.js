@@ -1,4 +1,4 @@
-export const renderPictures = (pictures) => {
+const renderPictures = (pictures) => {
   const picturesContainer = document.querySelector('.pictures');
   const fragment = document.createDocumentFragment();
 
@@ -18,3 +18,5 @@ export const renderPictures = (pictures) => {
 
   picturesContainer.appendChild(fragment);
 };
+
+export {renderPictures};
