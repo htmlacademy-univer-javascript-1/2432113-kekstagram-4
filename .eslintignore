@@ -1,1 +1,3 @@
 webpack.config.js
+vendor/pristine/dist/pristine.js
+vendor/pristine/dist/pristine.min.js
