@@ -2,6 +2,7 @@ import { createPostsArray } from './data.js';
 import { renderPictures } from './renderer.js';
 import { openModal } from './pictures-modal.js';
 import './post-form.js';
+import './post-form-validator.js';
 
 const posts = createPostsArray();
 renderPictures(posts);
