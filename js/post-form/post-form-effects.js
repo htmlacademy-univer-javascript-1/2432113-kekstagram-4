@@ -56,7 +56,7 @@ const onRadioChange = (evt) => {
   updateSlider(currentRadio);
 };
 
-const resetFilters = () => {
+const resetEffects = () => {
   filterRadios.forEach((filter) => {
     filter.removeEventListener('change', onRadioChange);
   });
@@ -84,4 +84,4 @@ noUiSlider.create(sliderElement, {
   connect: 'lower',
 });
 
-export { updateRadios, resetFilters };
+export { updateRadios, resetEffects };
