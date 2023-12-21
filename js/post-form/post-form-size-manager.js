@@ -18,6 +18,7 @@ const changeZoom = (factor = 1) => {
 };
 
 const updateButtons = () => {
+  scaleControl.value = `${100}%`;
   minusButton.addEventListener('click', () => changeZoom(-1));
   plusButton.addEventListener('click', () => changeZoom(1));
 };
