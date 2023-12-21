@@ -1,14 +1,15 @@
-//import { createPostsArray } from './data.js';
 import { loadData } from './post-form/post-form-api.js';
 import { renderPictures } from './renderer.js';
 import './post-form/post-form.js';
 import './post-form/post-form-validator.js';
+import { initFilters } from './filters.js';
+
 let posts = [];
-//const posts = createPostsArray();
 
 const onSuccess = (data) => {
   posts = data.slice();
   renderPictures(posts);
+  document.querySelector('.img-filters').classList.remove('img-filters--inactive');
 };
 
 const onFail = () =>{
@@ -27,5 +28,7 @@ const onFail = () =>{
   document.body.append(errorMesage);
 };
 
-
 loadData(onSuccess, onFail);
+initFilters();
+
+export { posts };
