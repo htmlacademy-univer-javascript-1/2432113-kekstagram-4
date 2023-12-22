@@ -18,9 +18,14 @@ const changeZoom = (factor = 1) => {
 };
 
 const updateButtons = () => {
-  scaleControl.value = `${100}%`;
+  scaleControl.value = '100%';
   minusButton.addEventListener('click', () => changeZoom(-1));
   plusButton.addEventListener('click', () => changeZoom(1));
 };
 
-export { updateButtons };
+const zoomReset = () => {
+  scaleControl.value = '100%';
+  imagePreview.style.transform = 'scale(100%)';
+};
+
+export { updateButtons, zoomReset };
