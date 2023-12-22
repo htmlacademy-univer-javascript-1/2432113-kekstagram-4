@@ -1,11 +1,10 @@
 import { loadData } from './post-form/post-form-api.js';
-import { renderPictures } from './renderer.js';
+import { renderPictures } from './pictures-renderer.js';
 import './post-form/post-form.js';
 import './post-form/post-form-validator.js';
 import { initFilters } from './filters.js';
 
 let posts = [];
-
 const onSuccess = (data) => {
   posts = data.slice();
   renderPictures(posts);
@@ -31,4 +30,4 @@ const onFail = () =>{
 loadData(onSuccess, onFail);
 initFilters();
 
-export { posts };
+export const postsToFilter = posts.slice();

@@ -8,10 +8,11 @@ const fileUpload = uploadForm.querySelector('#upload-file');
 
 const IMAGE_FILE_FORMATS = ['gif', 'jpg', 'jpeg', 'png'];
 
-import {updateRadios, resetEffects } from './post-form-effects.js';
-import { updateButtons } from './post-form-size-manager.js';
+import { updateRadios, resetEffects } from './post-form-effects.js';
+import { updateButtons, zoomReset } from './post-form-size-manager.js';
 import { uploadData } from './post-form-api.js';
 import { onSuccessfulSubmit, onFailedSubmit } from './post-form-submit.js';
+import { isEcsape } from '../utils.js';
 
 const onFormUploadSubmit = (evt) => {
   evt.preventDefault();
@@ -24,10 +25,11 @@ const closeForm = () => {
   document.body.classList.remove('modal-open');
 
   closeFormButton.removeEventListener('click', closeForm);
-  document.removeEventListener('keydown', closeByEsc);
+  document.removeEventListener('keydown', closeFormByEscape);
   uploadForm.removeEventListener('submit', onFormUploadSubmit);
   resetEffects();
   uploadForm.reset();
+  zoomReset();
 };
 
 const openForm = () => {
@@ -36,7 +38,7 @@ const openForm = () => {
 
 
   closeFormButton.addEventListener('click', closeForm);
-  document.addEventListener('keydown', closeByEsc);
+  document.addEventListener('keydown', closeFormByEscape);
   uploadForm.addEventListener('submit', onFormUploadSubmit);
 };
 
@@ -61,8 +63,8 @@ const onFormOpening = () =>
   changeImages();
 };
 
-function closeByEsc (evt) {
-  if (evt.key === 'Escape') {
+function closeFormByEscape (evt) {
+  if (isEcsape(evt)) {
     evt.preventDefault();
     closeForm();
   }
@@ -70,4 +72,4 @@ function closeByEsc (evt) {
 
 uploadInput.addEventListener('change', onFormOpening);
 
-export {uploadForm, openForm, closeForm};
+export {uploadForm, openForm, closeForm, closeFormByEscape};

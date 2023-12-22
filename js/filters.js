@@ -1,6 +1,6 @@
 import { debounce } from './utils.js';
-import { posts } from './main.js';
-import { renderPictures, removePictures } from './renderer.js';
+import { postsToFilter } from './main.js';
+import { renderPictures, removePictures } from './pictures-renderer.js';
 
 const RANDOM_PICTURES_AMOUNT = 10;
 
@@ -8,9 +8,9 @@ const filtersForm = document.querySelector('.img-filters__form');
 let activeButton = document.querySelector('.img-filters__button--active');
 
 const filters = {
-  'filter-default': () => [...posts],
-  'filter-random': () => [...posts].sort(() => Math.random() - 0.5).slice(0, RANDOM_PICTURES_AMOUNT),
-  'filter-discussed': () => [...posts].sort((first, second) => second.comments.length - first.comments.length),
+  'filter-default': () => [...postsToFilter],
+  'filter-random': () => [...postsToFilter].sort(() => Math.random() - 0.5).slice(0, RANDOM_PICTURES_AMOUNT),
+  'filter-discussed': () => [...postsToFilter].sort((first, second) => second.comments.length - first.comments.length),
 };
 
 const applyFilters = (id) => {
